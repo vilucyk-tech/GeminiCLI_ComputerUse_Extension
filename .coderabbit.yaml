@@ -1,0 +1,29 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+# Конфігурація CodeRabbit. Діє лише після встановлення GitHub App CodeRabbit на цей репозиторій.
+language: uk-UA
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  in_progress_fortune: false
+  auto_review:
+    enabled: true
+    drafts: false
+  path_instructions:
+    - path: "servers/**/*.py"
+      instructions: >-
+        Це MCP-сервер, який керує браузером за командами моделі. Перевіряй
+        валідацію вхідних аргументів інструментів, виконання довільного JavaScript
+        і переходи за URL, витік секретів у логи, закриття ресурсів браузера
+        при помилках.
+    - path: "servers/**/*.sh"
+      instructions: >-
+        Перевіряй лапки навколо змінних, обробку помилок (set -e) і відсутність
+        підстановки неперевірених даних у команди.
+    - path: "commands/**/*.toml"
+      instructions: >-
+        Перевіряй, що назви інструментів і аргументи в промпті збігаються з тими,
+        які реалізовано в servers/computer_use_mcp.py.
+chat:
+  auto_reply: true
